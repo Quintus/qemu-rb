@@ -11,7 +11,7 @@ class Qemu::Image::Raw < Qemu::Image
   # [RuntimeError]
   #   The image file was not in the +raw+ image format.
   # == Return value
-  # The newly created instance
+  # The newly created instance.
   def self.from_image(path)
     path = Pathname.new(path).expand_path
     obj  = allocate
