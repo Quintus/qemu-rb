@@ -1,0 +1,13 @@
+= Qemu-rb — Ruby wrapper around the QEMU tools
+
+Qemu-rb is a Ruby wrapper around the commandline tools that come with
+the QEMU[http://qemu.org] emulator and virtualizer. And no, it does
+not depend on libvirt.
+
+This is unfinished stuff. You can experiment with it if you want, but
+I don’t guarantee anything.
+
+== License
+
+This is LGPL version 3, see COPYING and COPYING.LESSER for more
+information.
