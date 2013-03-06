@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 require "pathname"
+require "json"
 require "open3"
 require "paint"
 

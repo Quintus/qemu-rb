@@ -17,4 +17,12 @@ describe Qemu::Image::Raw do
     assert_equal 4294967296, File::Stat.new(img.path).size
   end
 
+  it "should properly load existing images" do
+    `qemu-img create -f raw #@tmpdir/foo.img 1G`
+    img = Qemu::Image::Raw.from_image(@tmpdir + "foo.img")
+
+    assert_equal @tmpdir + "foo.img", img.path
+    assert_equal 1073741824, img.size
+  end
+
 end

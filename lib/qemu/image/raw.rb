@@ -3,6 +3,30 @@
 # see Qemu::Image::QCow2.
 class Qemu::Image::Raw < Qemu::Image
 
+  # Loads an existing image without modifying it.
+  # == Parameter
+  # [path]
+  #   The path to the image file.
+  # == Raises
+  # [RuntimeError]
+  #   The image file was not in the +raw+ image format.
+  # == Return value
+  # The newly created instance
+  def self.from_image(path)
+    path = Pathname.new(path).expand_path
+    obj  = allocate
+    info = JSON.parse(Qemu.execute_qemu_img("info", "--output=json", path))
+
+    raise("Image not in 'raw' format: #{path}") unless info["format"] == "raw"
+
+    obj.instance_eval do
+      @path = path
+      @size = info["virtual-size"]
+    end
+
+    obj
+  end
+
   # Create a new raw image.
   # == Parameters
   # [path]

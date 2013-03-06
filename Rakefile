@@ -13,6 +13,13 @@ task :console do
   IRB.start
 end
 
+desc "Runs the tests."
+task :test do
+  Dir["test/**/test_*.rb"].each do |path|
+    load path
+  end
+end
+
 RDoc::Task.new do |r|
   r.rdoc_dir = "doc"
   r.rdoc_files.include("lib/**/*.rb", "*.rdoc", "COPYING", "COPYING.LESSER")
